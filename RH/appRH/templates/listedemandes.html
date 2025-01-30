@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des demandes de congé</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    
+</head>
+<body style="background: linear-gradient(to bottom, black 0%, rgb(7, 25, 61) 50%, black 100%);">
+    <nav id="sidebar" class="min-vh-100 position-fixed" style="background-color: #0A1929; width: 250px; transition: all 0.3s ease; z-index: 1000;">
+        <button class="btn border-0 p-3 w-100 text-start" id="toggleSidebar">
+            <i class="bi bi-list text-white fs-4"></i>
+        </button> 
+        
+        <div class="px-3">
+            <div class="mb-4">
+                   
+                
+                    <a href="{% url 'dashboardAgent' %}" class="nav-link text-white p-0 d-flex align-items-center">
+                        <i class="bi bi-house-door" style="color: #3699FF; font-size: 1.2rem;"></i>
+                        <span class="ms-3 menu-text">Dashboard</span>
+                    </a>
+                
+                <div class="text-secondary small fw-medium mb-2 section-label">Favoris:</div>
+                <ul class="nav flex-column gap-2">
+                    <li class="nav-item">
+                        <a href="{% url 'liste_employes' %}" class="nav-link text-white p-0 d-flex align-items-center">
+                            <i class="bi bi-person" style="color: #3699FF;"></i>
+                            <span class="ms-3 menu-text">Employes</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'liste_conges' %}" class="nav-link text-white p-0 d-flex align-items-center">
+                            <i class="bi bi-calendar" style="color: #3699FF;"></i>
+                            <span class="ms-3 menu-text">Congés</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'liste_salaires' %}" class="nav-link text-white p-0 d-flex align-items-center">
+                            <i class="bi bi-currency-dollar" style="color: #3699FF;"></i>
+                            <span class="ms-3 menu-text">Salaires</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'liste_contrats' %}" class="nav-link text-white p-0 d-flex align-items-center">
+                            <i class="bi bi-file-text" style="color: #3699FF;"></i>
+                            <span class="ms-3 menu-text">Contrats</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <div class="text-secondary small fw-medium mb-2 section-label">Principal:</div>
+                <ul class="nav flex-column gap-2">
+                    <li class="nav-item">
+                        <a href="{% url 'liste_employes' %}" class="nav-link text-white p-0 d-flex align-items-center">
+                            <i class="bi bi-person" style="color: #3699FF;"></i>
+                            <span class="ms-3 menu-text">Employes</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'liste_conges' %}" class="nav-link text-white p-0 d-flex align-items-center">
+                            <i class="bi bi-calendar" style="color: #3699FF;"></i>
+                            <span class="ms-3 menu-text">Congés</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'liste_salaires' %}" class="nav-link text-white p-0 d-flex align-items-center">
+                            <i class="bi bi-currency-dollar" style="color: #3699FF;"></i>
+                            <span class="ms-3 menu-text">Salaires</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'liste_contrats' %}" class="nav-link text-white p-0 d-flex align-items-center">
+                            <i class="bi bi-file-text" style="color: #3699FF;"></i>
+                            <span class="ms-3 menu-text">Contrats</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'liste_formations' %}" class="nav-link text-white p-0 d-flex align-items-center">
+                            <i class="bi bi-people" style="color: #3699FF;"></i>
+                            <span class="ms-3 menu-text">Formations</span>
+                        </a>
+                    </li>
+                    <li>
+                    <a href="{% url 'liste_services' %}" class="nav-link text-white p-0 d-flex align-items-center">
+                        <i class="bi bi-gear" style="color: #3699FF; font-size: 1.2rem;"></i>
+                        <span class="ms-3 menu-text">Services</span>
+                    </a>
+                </li>
+                <li>
+                <a href="{% url 'liste_offre' %}" class="nav-link text-white p-0 d-flex align-items-center">
+                    <i class="bi bi-briefcase" style="color: #3699FF; font-size: 1.2rem;"></i>
+                    <span class="ms-3 menu-text">Offres</span>
+                </a>
+            </li>
+        <li>
+            <a href="{% url 'liste_candidature' %}" class="nav-link text-white p-0 d-flex align-items-center">
+                <i class="bi bi-person-check" style="color: #3699FF; font-size: 1.2rem;"></i>
+                <span class="ms-3 menu-text">Candidats</span>
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'team_list' %}" class="nav-link text-white p-0 d-flex align-items-center">
+                <i class="bi bi-person-check" style="color: #3699FF; font-size: 1.2rem;"></i>
+                <span class="ms-3 menu-text">Team</span>
+            </a>
+        </li>
+     <br>
+                    <li class="nav-item">
+                  <form method="POST" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button 
+    class="nav-link text-white p-0 d-flex align-items-center gap-1 px-2 py-1 rounded w-100" 
+    style="background-color: #0A1929; border: 1px solid #3699FF; font-size: 1rem; line-height: 1;">
+    <i class="bi bi-box-arrow-right" style="color: #3699FF; font-size: 1rem;"></i>
+    <span class="menu-text" style="margin-left: 0;">Se Déconnecter</span>
+</button>
+
+                 </form>
+                </li>
+
+                 </ul>
+                </div>
+            </div>
+      
+    </nav>  
+    <div class="flex-grow-1" style="margin-left: 250px; transition: margin-left 0.3s ease;">
+        <div >
+    <div class="container py-5">       
+        <div style="color:rgb(255, 255, 255);">
+        <h1>Liste des demandes de congé</h1>
+        <br>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Employé</th>
+                    <th>Type de congé</th>
+                    <th>Dates</th>
+                    <th>Statut</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for demande in demandes %}
+                <tr>
+                    <td>{{ demande.employe.nom }} {{ demande.employe.prenom }}</td>
+                    <td>{{ demande.type_conge }}</td>
+                    <td>{{ demande.date_debut }} - {{ demande.date_fin }}</td>
+                    <td>{{ demande.statut }}</td>
+                    <td>
+                        <a href="{% url 'traiter_demande' demande.id 'approuver' %}" class="btn btn-success">Approuver</a>
+                        <a href="{% url 'traiter_demande' demande.id 'rejeter' %}" class="btn btn-danger">Rejeter</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="text-center">
+            <a href="{% url 'liste_conges' %}" class="btn btn-primary btn-lg mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Return to the leave list">
+                <i class="bi bi-arrow-left-circle"></i> Revenir à la liste de congés
+            </a>
+        </div>
+    </div>
+</div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.querySelector('.flex-grow-1');
+        const toggleButton = document.getElementById('toggleSidebar');
+        const menuTexts = document.querySelectorAll('.menu-text');
+        const sectionLabels = document.querySelectorAll('.section-label');
+
+        toggleButton.addEventListener('click', () => {
+            const isExpanded = sidebar.style.width === '250px';
+            sidebar.style.width = isExpanded ? '60px' : '250px';
+            mainContent.style.marginLeft = isExpanded ? '60px' : '250px';
+            
+            menuTexts.forEach(text => {
+                text.style.display = isExpanded ? 'none' : 'block';
+            });
+            sectionLabels.forEach(label => {
+                label.style.display = isExpanded ? 'none' : 'block';
+            });
+            sidebar.style.paddingLeft = isExpanded ? '0.5rem' : '1rem';
+            sidebar.style.paddingRight = isExpanded ? '0.5rem' : '1rem';
+        });
+    </script>
+</body>
+</html>

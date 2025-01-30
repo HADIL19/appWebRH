@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saisie de Pointage</title>
+</head>
+
+<body style="background-color: rgb(2, 9, 31); color: white;">
+    <div class="container mt-5" style="max-width: 50%;">
+        <div class="card shadow-sm p-4" style="background-color: rgb(242, 240, 242);">
+            <h1 class="text-center fw-bold mb-4" style="color: black;">Saisie de Pointage</h1>
+            
+<p style="color: black;">Employé : {{ employe.nom }} {{ employe.prenom }}</p>
+
+<form method="post">
+    {% csrf_token %}
+    <label for="date" style="color: black;">Date :</label>
+    <input type="date" name="date" value="{% now 'Y-m-d' %}" required>
+  <br>
+  <br>
+    <label for="statut" style="color: black;">Statut :</label>
+    <select name="statut">
+        <option value="Présent">Présent</option>
+        <option value="Absent">Absent</option>
+    </select>
+    <br>
+    <br>
+    <label for="heure_entree" style="color: black;">Heure d'entrée (optionnel) :</label>
+    <input type="time" name="heure_entree">
+
+    
+    <div class="container text-center mt-5">
+        <button type="submit" class="btn btn-success">
+          <i class="bi bi-check-circle me-2"></i>Valider
+        </button>
+      </div>
+</form>
+          <div class="d-flex justify-content-center mt-3">
+                <a href="{% url 'liste_employes' %}" class="btn" style="background-color: #003366; color: white; border-radius: 5px;">
+                    Retour à la liste des employes
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

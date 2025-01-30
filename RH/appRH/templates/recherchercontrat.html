@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Rechercher des Contrats</h1>
+
+    <form method="get" action="{% url 'rechercher_contrat' %}">
+        <input type="text" name="q" placeholder="Rechercher par nom ou type de contrat..." value="{{ query }}">
+        <select name="type_contrat">
+            <option value="">Tous les types</option>
+            <option value="CDI" {% if type_contrat == "CDI" %}selected{% endif %}>CDI</option>
+            <option value="CDD" {% if type_contrat == "CDD" %}selected{% endif %}>CDD</option>
+            <option value="Stage" {% if type_contrat == "Stage" %}selected{% endif %}>Stage</option>
+        </select>
+        <input type="date" name="date_debut" value="{{ date_debut }}">
+        <input type="date" name="date_fin" value="{{ date_fin }}">
+        <select name="archive">
+            <option value="actif" {% if archive == "actif" %}selected{% endif %}>Actifs</option>
+            <option value="archivés" {% if archive == "archivés" %}selected{% endif %}>Archivés</option>
+        </select>
+        <button type="submit">Rechercher</button>
+    </form>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Employé</th>
+                <th>Type de Contrat</th>
+                <th>Date Début</th>
+                <th>Date Fin</th>
+                <th>Statut</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for contrat in contrats %}
+            <tr>
+                <td>{{ contrat.employe.nom }}</td>
+                <td>{{ contrat.type_contrat.nom }}</td>
+                <td>{{ contrat.date_debut }}</td>
+                <td>{{ contrat.date_fin|default:"Indéterminée" }}</td>
+                <td>{% if contrat.actif %}Actif{% else %}Archivé{% endif %}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5">Aucun contrat trouvé.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+</body>
+</html>

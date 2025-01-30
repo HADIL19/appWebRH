@@ -1,0 +1,34 @@
+</html>
+<!DOCTYPE html>
+<html lang="fr">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <title>Confirmation d'Inscription</title>
+</head>
+<body style="background-color:rgb(2, 9, 31); color: rgb(8, 8, 8);">
+    <div class="container mt-5" style="max-width: 50%;">
+
+        <!-- Card with a light background and black text -->
+        <div class="card shadow-sm p-4" style="background-color : rgb(242, 240, 242);">
+            <h1 class="text-center fw-bold mb-4" style="color: black;">Confirmation d'Inscription</h1>
+            <div class="message-box">
+                <p>{{ message }}</p>
+            </div>
+            <div class="formation-details">
+                <h2>Détails de la Formation</h2>
+                <p><strong>Titre :</strong> {{ formation.titre }}</p>
+                <p><strong>Thème :</strong> {{ formation.theme }}</p>
+                <p><strong>Date de début :</strong> {{ formation.date_debut }}</p>
+                <p><strong>Date de fin :</strong> {{ formation.date_fin }}</p>
+            </div>
+        </div>
+            <div class="d-flex justify-content-center">
+                <a href="{% url 'liste_formations' %}" class="btn" style="background-color: #003366; color: white; border-radius: 5px;">Retour à la liste</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

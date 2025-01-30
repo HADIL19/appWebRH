@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<form method="get" action="{% url 'rechercher_offre' %}">
+    <input type="text" name="q" value="{{ query }}" placeholder="Rechercher un service...">
+    <button type="submit">Rechercher</button>
+</form>
+
+{% if offres %}
+    <ul>
+    {% for offre in offres %}
+        <li>
+                {{ offre.poste }} {{ offre.service.nom }} 
+            </a>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Aucun offre trouvé pour "{{ query }}"</p>
+{% endif %}
+
+</body>
+</html>

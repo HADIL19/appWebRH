@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Supprimer un Favori</title>
+</head>
+<body>
+    <h1>Supprimer le Favori</h1>
+    <p>Voulez-vous vraiment supprimer le favori "{{ favori.nom }}" ?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Oui</button>
+    </form>
+    <a href="{% url 'liste_favoris' %}">Non, revenir</a>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rapport d'Absences</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body style="background: linear-gradient(to bottom, black 0%, rgb(7, 25, 61) 50%, black 100%);">
+        <div class="container py-5">
+         <div class="d-flex justify-content-between align-items-center mb-4" style="color:rgb(255, 255, 255);">
+                      <h1 class="text-center fw-bold mb-4"> Rapport d'Absences - {{ employe.nom }} {{ employe.prenom }}</h1> 
+                      <p class="text-center">Mois : {{ mois }} / Année : {{ annee }}</p>
+       </div>
+                      <br>           
+           <div class="table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <thead class="table-light text-center">
+                            <tr>
+                                <th>Date</th>
+                                <th>Statut</th>
+                            </tr>
+                    </thead> 
+                    <tbody>
+                        {% for absence in absences %}
+                        <tr>
+                            <td>{{ absence.date }}</td>
+                            <td>{{ absence.statut }}</td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="2" class="text-center">Aucune absence enregistrée pour ce mois.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+       </table>
+       <div class="mb-3 text-center">
+                           <a href="{% url 'liste_employes' %}" class="btn btn-primary shadow-sm px-4 py-2">
+                               <i class="bi bi-arrow-left me-2"></i> Retour à la liste des employés
+                           </a>
+                       </div>
+       </div>
+       </div>
+       </div>
+   
+</body>
+</html>

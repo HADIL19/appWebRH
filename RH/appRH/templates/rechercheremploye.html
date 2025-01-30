@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rechercher employe</title>
+</head>
+<body>
+<form method="get" action="{% url 'rechercher_employe' %}">
+    <input type="text" name="q" value="{{ query }}" placeholder="Rechercher un employé...">
+    <button type="submit">Rechercher</button>
+</form>
+
+{% if employes %}
+    <ul>
+    {% for employe in employes %}
+        <li>
+            <a href="{% url 'detail_employe' employe.id %}">
+                {{ employe.nom }} {{ employe.prenom }} 
+            </a>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Aucun employé trouvé pour "{{ query }}"</p>
+{% endif %}
+
+</body>
+</html>

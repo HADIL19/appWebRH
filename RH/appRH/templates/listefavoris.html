@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mes Favoris</title>
+</head>
+<body>
+    <h1>Mes Favoris</h1>
+    <ul>
+        {% for favori in favoris %}
+        <li>
+            <a href="{{ favori.url }}">{{ favori.nom }}</a>
+            <form method="post" action="{% url 'supprimer_favori' favori.id %}" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit">Supprimer</button>
+            </form>
+        </li>
+        {% empty %}
+        <li>Vous n'avez aucun favori.</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'ajouter_favori' %}">Ajouter un Favori</a>
+</body>
+</html>

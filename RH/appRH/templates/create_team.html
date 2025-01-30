@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Créer une équipe</title>
+</head>
+
+<body style="background-color: rgb(2, 9, 31); color: white;">
+    <div class="container mt-5" style="max-width: 50%;">
+        <div class="card shadow-sm p-4" style="background-color: rgb(242, 240, 242);">
+            <h1 class="text-center fw-bold mb-4" style="color: black;">Créer une nouvelle équipe</h1>
+            <form method="POST">
+                <form method="post">
+                    {% csrf_token %}
+                    <label for="name" style="color: black;">Nom de l'équipe :</label><br>
+                    <input type="text" id="name" name="name" required><br><br>
+            
+                    <label for="manager" style="color: black;">Manager :</label><br>
+                    <select id="manager" name="manager" required>
+                        <option value="" disabled selected style="color: black;">-- Choisir un manager --</option>
+                        {% for manager in managers %}
+                        <option value="{{ manager.id }}">{{ manager.username }}</option>
+                        {% endfor %}
+                    </select><br><br>
+            
+                    <label for="members" style="color: black;">Employés :</label><br>
+                    <select id="members" name="members" multiple required>
+                        {% for employee in employees %}
+                        <option value="{{ employee.id }}">{{ employee.prenom }} {{ employee.nom }}</option>
+                        {% endfor %}
+                    </select><br><br>
+                    <div class="text-center">
+                        <button type="submit"class="btn" style="background-color:rgb(2, 17, 38); color: white; border-radius: 5px;">
+                            Créer l'équipe
+                        </button>
+                    </div>
+                    
+        
+            </form>
+            <div class="d-flex justify-content-center mt-3">
+                <a href="{% url 'team_list' %}" class="btn" style="background-color: #003366; color: white; border-radius: 5px;">
+                    Retour à la liste des équipes
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
