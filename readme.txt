@@ -17,6 +17,11 @@ Bienvenue dans **appWebRH**, une application web moderne et intuitive développ�
 - **Python** & **Django** - Backend robuste et sécurisé.
 - **HTML**, **CSS**, **JS**, **Bootstrap** - Interface utilisateur réactive et moderne.
 - **SQLite ** - Base de données pour stocker les informations RH.
+## 📸 Screenshot  
+ ## 📸 Screenshot  
+
+![Tableau de Bord](image.png)
+
 
 
 ## 📦 Installation
